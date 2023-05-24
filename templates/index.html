@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IP Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .info {
+            margin-top: 20px;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        .value {
+            margin-left: 10px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>IP Information</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="info error">
+                <p class="label">Error:</p>
+                <p class="value">{{ messages[0] }}</p>
+            </div>
+        {% endif %}
+    {% endwith %}
+    <div class="info">
+        <p class="label">IP Address:</p>
+        <p class="value">{{ ip }}</p>
+    </div>
+    <div class="info">
+        <p class="label">City:</p>
+        <p class="value">{{ geo_info.city }}</p>
+    </div>
+    <div class="info">
+        <p class="label">Region:</p>
+        <p class="value">{{ geo_info.regionName }}</p>
+    </div>
+    <div class="info">
+        <p class="label">Country:</p>
+        <p class="value">{{ geo_info.country }}</p>
+    </div>
+    <div class="info">
+        <p class="label">ISP:</p>
+        <p class="value">{{ geo_info.isp }}</p>
+    </div>
+    <div class="info">
+        <p class="label">Reverse DNS:</p>
+        <p class="value">{{ reverse_dns }}</p>
+    </div>
+    <div class="info">
+        <p class="label">User Agent:</p>
+        <p class="value">{{ user_agent }}</p>
+    </div>
+</body>
+</html>
